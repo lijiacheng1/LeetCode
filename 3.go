@@ -9,6 +9,8 @@ func main() {
 	fmt.Println(lengthOfLongestSubstring(s))
 }
 
+//将每一个字母最后出现的位置保存，每当出现重复字母时，index-index2+1即为子串长度
+//输出子串长度最大值
 func lengthOfLongestSubstring(s string) int {
 	max := 0
 	stringmap := make(map[rune]int)

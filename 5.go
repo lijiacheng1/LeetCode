@@ -8,12 +8,11 @@ func main() {
 	s := "ac"
 	fmt.Println(longestPalindrome(s))
 }
-
+//思路很简单，遍历每个字符，双向比较，寻找最长回文子串
 func longestPalindrome(s string) string {
 	splits := []byte(s)
 	max := 0
 	pre, last := 0, 0
-
 	for i := 0; i < len(s); i++ {
 		if i+1 < len(s) && s[i] == s[i+1] {
 			length := 2

@@ -11,8 +11,7 @@ func main() {
 func reverse(x int) int {
 	reversedNumber := 0
 	for x != 0 {
-		rem := x % 10
-		reversedNumber = reversedNumber*10 + rem
+		reversedNumber = reversedNumber*10 + (x % 10)
 		x = x / 10
 	}
 	if reversedNumber <= -1<<31 || reversedNumber >= 1<<31-1 {

@@ -8,6 +8,7 @@ func main() {
 	fmt.Println(romanToInt("MCMXCIV"))
 }
 
+//遇到一个字母就加，当后面的字母大于前面的字母时就减2倍，反正不会出现“IIV”的情况
 func romanToInt(s string) int {
 	pre,last,result := 0,0,0
 	for _, v := range s {

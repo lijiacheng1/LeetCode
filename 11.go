@@ -8,7 +8,7 @@ func main() {
 	asd := []int{1,8,6,2,5,4,8,3,7}
 	fmt.Println(maxArea(asd))
 }
-
+//超过了100%的人，思路很有意思
 func maxArea(height []int) int {
 	i :=0
 	j:= len(height)-1

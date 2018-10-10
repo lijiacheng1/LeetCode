@@ -2,14 +2,22 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 func main() {
 	fmt.Println(intToRoman(1994))
 }
 
+//一个非常巧妙地方法，免得写出很长的代码
 func intToRoman(num int) string {
+	M := []string{"", "M", "MM", "MMM"}
+	C := []string{"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"}
+	X := []string{"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"}
+	I := []string{"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"}
+	return M[num/1000] + C[(num%1000)/100] + X[(num%100)/10] + I[num%10]
+}
+
+/*func intToRoman(num int) string {
 	result := []string{}
 	x := num / 1000
 	for i := 0; i < x; i++ {
@@ -25,7 +33,6 @@ func intToRoman(num int) string {
 	yuToRoman(num,"X","V","I",&result)
 	return strings.Join(result,"")
 }
-
 func yuToRoman(x int, shu10, shu5, shu1 string, result *[]string) {
 	switch x {
 	case 1:
@@ -47,4 +54,4 @@ func yuToRoman(x int, shu10, shu5, shu1 string, result *[]string) {
 	case 9:
 		*result = append(*result,shu1,shu10)
 	}
-}
+}*/

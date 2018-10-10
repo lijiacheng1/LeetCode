@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	fmt.Println(threeSum([]int{0,0,0,0,0,0,0,0,0,0,0,0,0}))
+	fmt.Println(threeSum([]int{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}))
 }
-
+//sort自带排序算法超出内存限制。。。
 func threeSum(nums []int) [][]int {
 	result := [][]int{}
 	sort.Ints(nums)
