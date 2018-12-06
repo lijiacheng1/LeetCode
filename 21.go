@@ -5,40 +5,31 @@ import (
 )
 
 func main() {
-	fmt.Println(isValid("{[][]}"))
+	fmt.Println(mergeTwoLists(nil, nil))
 }
 
-func isValid(s string) bool {
-	rem := []rune{}
-	for _, v := range s {
-		if v == '(' || v == '[' || v == '{' {
-			rem = append(rem, v)
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
+func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
+	rem := new(ListNode)
+	result := rem
+	for ; l1 != nil && l2 != nil; {
+		if l1.Val < l2.Val {
+			rem.Next = l1
+			l1 = l1.Next
 		} else {
-			if v == ')' {
-				if len(rem) != 0 && rem[len(rem)-1] == '(' {
-					rem = rem[:len(rem)-1]
-				} else {
-					return false
-				}
-			}
-			if v == ']' {
-				if len(rem) != 0 && rem[len(rem)-1] == '[' {
-					rem = rem[:len(rem)-1]
-				} else {
-					return false
-				}
-			}
-			if v == '}' {
-				if len(rem) != 0 && rem[len(rem)-1] == '{' {
-					rem = rem[:len(rem)-1]
-				} else {
-					return false
-				}
-			}
+			rem.Next = l2
+			l2 = l2.Next
 		}
+		rem = rem.Next
 	}
-	if len(rem)==0{
-		return true
+	if l1 == nil {
+		rem.Next = l2
+	} else {
+		rem.Next = l1
 	}
-	return false
+	return result.Next
 }
