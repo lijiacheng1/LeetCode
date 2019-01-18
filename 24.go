@@ -1,8 +1,9 @@
 package main
 
 func main() {
-	swapPairs()
+	swapPairs(nil)
 }
+
 /**
  * Definition for singly-linked list.
  * type ListNode struct {
@@ -11,24 +12,32 @@ func main() {
  * }
  */
 func swapPairs(head *ListNode) *ListNode {
-	rem := head
-	if head != nil && head.Next != nil{
-		head = head.Next
+	result := head
+	if head == nil || head.Next == nil {
+		return result
+	} else {
+		result = head.Next
 	}
-	for ; rem != nil && rem.Next != nil;  {
-		reverse24(rem)
-		rem = rem.Next
+	remN, remP, cir := head, head, head
+	couter := 0
+	for ; cir != nil; {
+		couter++
+		if couter%2 != 0 {
+			cir = cir.Next
+		} else {
+			//remN记录3的地址，不管3存不存在
+			remP = remN
+			remN = cir.Next
+			cir.Next = remP
+			if remN != nil && remN.Next != nil {
+				remP.Next = remN.Next
+			} else if remN != nil {
+				remP.Next = remN
+			} else {
+				remP.Next = nil
+			}
+			cir = remN
+		}
 	}
-	return head
-}
-
-func reverse24(head *ListNode) {
-	rem := head.Next
-	if rem.Next.Next!= nil{
-		head.Next = rem.Next.Next
-	}else {
-		head.Next = rem.Next
-	}
-	rem.Next = head
-
+	return result
 }
